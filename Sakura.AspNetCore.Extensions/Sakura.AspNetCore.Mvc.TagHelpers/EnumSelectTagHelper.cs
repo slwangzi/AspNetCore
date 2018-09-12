@@ -82,14 +82,14 @@ namespace Sakura.AspNetCore.Mvc.TagHelpers
 		///     <see cref="TagHelpers.TextSource.MemberNameOnly" />.
 		/// </summary>
 		[HtmlAttributeName(TextSourceAttributeName)]
-		public TextSource TextSource { get; set; } = TextSource.MemberNameOnly;
+		public TextSource TextSource { get; set; } = TextSource.Description;
 
 		/// <summary>
 		///     Get or set the value source for the generated options. The default value of this property is
 		///     <see cref="EnumOptionValueSource.Name" />.
 		/// </summary>
 		[HtmlAttributeName(ValueSourceAttributeName)]
-		public EnumOptionValueSource ValueSource { get; set; } = EnumOptionValueSource.Name;
+		public EnumOptionValueSource ValueSource { get; set; } = EnumOptionValueSource.Value;
 
 		#endregion
 

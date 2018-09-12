@@ -1,0 +1,60 @@
+﻿@model User;
+@{
+    Layout = null;
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    li{margin-top:10px}
+</style>
+<div style="padding:20px">
+    <ul>
+        <li>
+            <div>asp-enum-for</div>
+            <select asp-enum-for="MemberType"></select>
+        </li>
+        <li>
+            <div>asp-value-source，asp-text-source，（asp-value对此无效）</div>
+            <select asp-enum-for="MemberType" asp-value="2" asp-value-source="Value" asp-text-source="Description"></select>
+        </li>
+        <li>
+            <div>asp-enum-type</div>
+            <select asp-enum-type="@typeof(UserType)"></select>
+        </li>
+        <li>
+            <div>asp-enum-type,asp-enum-value(这2个必须同时使用)</div>
+            <select asp-enum-type="@typeof(UserType)" asp-enum-value="@Model.MemberType"></select>
+        </li>
+        <li>
+            <div>为下拉列表指定值（只能为html下拉列表指定值）</div>
+            <select id="MemberType" name="MemberType" asp-value="1">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </li>
+        <li>
+            <div>添加最后一项</div>
+            <select asp-option-label="其它" asp-option-label-position="Last" asp-value="2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </li>
+        <li>
+            <div>未实现效果</div>
+            <label>
+                <input type="checkbox" asp-enum-flag-for="Features" asp-enum-flag-value="Features.CanSeek" /> CanSeek
+            </label>
+        </li>
+        <li>
+            <label>
+                <enum-item-display-text for="MemberType" text-source="Name" />
+            </label>
+        </li>
+        <li>
+            <div>asp-items</div>
+            <label>
+                <select asp-items="@Html.GetEnumSelectList<UserType>()"></select>
+            </label>
+        </li>
+    </ul>
+</div>
